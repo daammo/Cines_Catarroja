@@ -46,6 +46,22 @@ class Usuario extends db
       return null;
     }
   }
+  function MiPerfil($usuario){
+    //Construimos la consulta
+    $sql="SELECT * from usuarios WHERE usuario='".$usuario."'";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
 
 }
 

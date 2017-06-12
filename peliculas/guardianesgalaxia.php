@@ -2,8 +2,10 @@
 <<?php
 include '../seguridad/seguridad.php';
 include '../modelo/pelicula.php';
+include '../modelo/comentarios.php';
 $sesion=new Seguridad();
 $peli=new Pelicula();
+$coment=new Comentarios()
  ?>
 <html>
 	<head>
@@ -76,16 +78,31 @@ $peli=new Pelicula();
 						<section>
 							<h1>Trailer</h1>
               <iframe width="560" height="380" src="https://www.youtube.com/embed/12gvJgLE4us?ecver=1" frameborder="0" allowfullscreen></iframe>
-							<?php
-          $comentarios=$peli->mostrarComentario();
-					?>
-					<h1>Comentarios de los usuarios</h1>
-					<br><br>
-	<?php foreach ($comentarios as $datos) {
-  echo "<a>" .$datos['nombre']."</a><br><br>";
-  echo "<a>" .$datos['comentario']."</a><br><br>";
-	 }
-	 ?>
+              <br><br>
+              <h1>Sección de comentarios</h1>
+              <?php
+              if (isset($_SESSION['usuario'])) {
+                echo "<br><br><br>";
+                echo "<h2>Inserte su comentario</h2>";
+                 ?>
+                <form class="" action='guardianesgalaxia.php' method='post'>
+                <input type="text" name="comentario" value="0"><br><br>
+                <input type="hidden" name="id_pelicula" value= "2">
+                <input type="submit" name="Insertar" value="Comentar">
+                <?php
+                if ($_POST['comentario']!=0) {
+                  $insertar=$coment->insertarComentario($_POST['comentario'], $_COOKIE['id_usuario'], $_POST['id_pelicula']);
+                  if ($insertar==null) {
+                    echo "Error al registrar el comentario.";
+                  }
+              }
+              }
+              $listacomentarios=$coment->mostrarComentario(2);
+          foreach ($listacomentarios as $comentario) {
+            echo "<br><br><a>Nombre: " .$comentario['nombre'] ."<br><br></a>";
+            echo "<a>Comentario: " .$comentario['comentario'] ."<br><br></a>";
+          }
+               ?>
 						</section>
 					</div>
 					<div class="3u">
@@ -108,27 +125,34 @@ $peli=new Pelicula();
 								if (isset($_SESSION['usuario'])) {
 								 ?>
 								 		<h1>RESERVA</h1><br><br>
-										<form class="" action='formularioreservas.php' method='post'>
+										<form class="" action='guardianesgalaxia.php' method='post'>
 													<a>Fecha:</a> <input type="date" name="fecha" value= ""><br><br>
-										      <a>Hora:</a> <select name='hora'>
-			   													<option value='1'>8:30</option>
-																	<option value='2'>12:00</option>
-																	<option value='3'>14:15</option>
-																	<option value='4'>16:30</option>
-																	<option value='5'>18:40</option>
-																	<option value='6'>20:00</option>
+										      <a>Hora:</a> <select name="hora">
+			   													<option value='8:30'>8:30</option>
+																	<option value='12:00'>12:00</option>
+																	<option value='14:15'>14:15</option>
+																	<option value='16:30'>16:30</option>
+																	<option value='18:40'>18:40</option>
+																	<option value='20:00'>20:00</option>
 																</select><br><br>
 										      <a>Numero de personas: </a><input type="number" name="personas" value="" min="1" max="50">
-										      <input type="submit" name="Reservar" value="Reservar">";
-							</ul>;
-										<?php
-								    }
-								 ?>
+                          <input type="hidden" name="id_pelicula" value= "2"><br><br>
+										      <input type="submit" name="Reservar" value="Reservar">
+							</ul>
 
+										<?php
+                    if (isset($_POST['fecha']) && isset($_POST['hora']) && isset($_POST['personas']) && isset($_POST['id_pelicula'])) {
+
+                      $reserva=$peli->hacerReserva($_POST['personas'],$_POST['hora'],$_POST['fecha'],$_POST['id_pelicula'],$_COOKIE['id_usuario']);
+                    }
+                  }
+                    ?>
 						</section>
 						</section>
 					</div>
-
+          </div>
+          </div>
+          </div>
 		<!-- Copyright -->
 		<div id="copyright">
 			<div class="container">

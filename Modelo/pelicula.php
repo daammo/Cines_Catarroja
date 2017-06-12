@@ -11,9 +11,29 @@ class Pelicula extends db
     parent::__construct();
   }
 
-  function mostrarComentario(){
+      function hacerReserva($personas,$hora,$fecha,$idpelicula,$iduser){
+    $sql="INSERT INTO reserva(idreserva, personas, hora, fecha, id_pelicula, idusuario) VALUES (NULL, ".$personas.", '".$hora."', '".$fecha."', ".$idpelicula.", ".$iduser.")";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=false){
+      //Recogemos la ultima reserva insertada
+      $sql="SELECT * from reserva ORDER BY idreserva DESC";
+      //Realizamos la consulta
+      $resultado=$this->realizarConsulta($sql);
+      if($resultado!=false){
+        //sacamos el resultado con un fetch_assoc
+        return $resultado->fetch_assoc();
+      }else{
+        return null;
+      }
+    }else{
+      return null;
+    }
+  }
+
+  function mostrarReserva($fecha, $usuario){
         //Construimos la consulta
-        $sql="SELECT comentarios.comentario, usuarios.nombre FROM comentarios, peliculas, usuarios WHERE id_usuario=usuario.id AND comentario.id_pelicula=peliculas.id_pelicula";
+        $sql="SELECT * from reserva WHERE fecha>='".$fecha."' AND idusuario= " .$usuario;
         //Realizamos la consulta
         $resultado=$this->realizarConsulta($sql);
         if($resultado!=null){

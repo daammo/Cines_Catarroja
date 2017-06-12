@@ -111,41 +111,6 @@
 						<p><a href="#"><img src="images/piratas.jpg" alt=""></a></p>
 					</section>
 				</div>
-				<!-- Tercera -->
-				<div class="3u">
-					<section>
-						<header>
-							<h1>American Pastoral</h1>
-						</header>
-						<p><a href="#"><img src="images/americanpastoral.jpg" alt=""></a></p>
-					</section>
-				</div>
-				<div class="3u">
-					<section>
-						<header>
-							<h1>Testigo</h1>
-						</header>
-						<p><a href="#"><img src="images/testigo.jpg" alt=""></a></p>
-					</section>
-				</div>
-				<div class="3u">
-					<section>
-						<header>
-							<h1>Patria</h1>
-						</header>
-						<p><a href="#"><img src="images/patria.jpg" alt=""></a></p>
-					</section>
-				</div>
-				<div class="3u">
-					<section>
-						<header>
-							<h1>Alien: covenant</h1>
-						</header>
-						<p><a href="#"><img src="images/alien.jpg" alt=""></a></p>
-					</section>
-				</div>
-			</div>
-		</div>
 
 		<!-- Copyright -->
 		<div id="copyright">

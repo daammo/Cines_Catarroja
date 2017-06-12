@@ -36,7 +36,7 @@ $sesion=new Seguridad();
 						echo "<ul>";
 							echo "<li class='active'><a href='index.php'>Pagina principal</a></li>";
 							echo "<li><a href='cartelera.php'>Cartelera</a></li>";
-							echo "<li><a href='contacto.php'>Contactanos</a></li>";
+							echo "<li><a href='myperfil.php'>MyPerfil</a></li>";
 							echo "<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>";
 							echo "<li><a href='logout.php'>Cerrar sesion</a>";
 						echo "</ul>";
@@ -46,7 +46,6 @@ $sesion=new Seguridad();
 						echo "<ul>";
 							echo "<li class='active'><a href='index.php'>Pagina principal</a></li>";
 							echo "<li><a href='cartelera.php'>Cartelera</a></li>";
-							echo "<li><a href='contacto.php'>Contactanos</a></li>";
 							echo "<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>";
 							echo "<li><a href='login.php'>Iniciar sesion</a></li>";
 				      echo "<li><a href='registro.php'>Registro</a></li>;";
@@ -78,6 +77,7 @@ $sesion=new Seguridad();
 						<section>
 								<h1>CIENCIA FICCION</h1>
 							<a href="peliculas/guardianesgalaxia.php" class="image full"><img src="images/gog.jpg" alt=""></a>
+
 							<header>
 								<h2>Guardianes de la galaxia Vol.2</h2>
 							</header>

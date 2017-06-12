@@ -27,6 +27,7 @@
           if ($registrado['pass']==sha1($_POST['pass'])) {
             //si el usuario es correcto, creamos la sesion.
             $sesion->addUsuario($registrado['usuario']);
+            setcookie("id_usuario", $registrado['id'], time()+86400);
             header ('Location:index.php');
           }else {
             echo "Las contraseñas no coinciden";
