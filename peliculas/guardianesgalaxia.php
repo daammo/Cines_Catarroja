@@ -90,7 +90,7 @@ $coment=new Comentarios()
                 <input type="hidden" name="id_pelicula" value= "2">
                 <input type="submit" name="Insertar" value="Comentar">
                 <?php
-                if ($_POST['comentario']!=0) {
+                if (isset($_POST['comentario']) && $_POST['comentario']<>"0") {
                   $insertar=$coment->insertarComentario($_POST['comentario'], $_COOKIE['id_usuario'], $_POST['id_pelicula']);
                   if ($insertar==null) {
                     echo "Error al registrar el comentario.";
