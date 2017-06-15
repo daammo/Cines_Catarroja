@@ -66,6 +66,7 @@ class Usuario extends db
   public function ActualizarMiPerfil($usuario, $nombre, $apellidos, $email, $telefono, $dni, $direccion)
   {
     $sql="UPDATE usuarios SET nombre='" .$nombre ."', apellidos='" .$apellidos ."', email='" .$email ."', telefono=".$telefono.", dni='".$dni."', edad=".$edad." WHERE usuario='" .$usuario ."'";
+    echo $sql;
     $actualizarperfil=$this->realizarConsulta($sql);
     if ($actualizarperfil=!false) {
       return true;
